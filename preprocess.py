@@ -18,7 +18,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from sklearn.model_selection import train_test_split
 
-def import_csv_data(cvs_path):
+def import_csv_data(csv_path):
     """ Import CSV data from file.
     """
     print('Importing CSV data')
@@ -64,28 +64,28 @@ def trim_image(image, start_row, stop_row):
     trimmed_image = image[start_row:stop_row, :, :] # Trim non-road data
     return trimmed_image
 
-def show_trim_results(cen, lef, rig, cen_trim, lef_trim, rig_trim):
+def show_trim_results(cen, cen_proc):
     """ Examine RBG images after trimming rows
     """
     #plt.figure
-    plt.subplot(231)
-    plt.imshow(lef)
-    plt.title('Left pre-trim')
+    #plt.subplot(231)
+    #plt.imshow(lef)
+    #plt.title('Left pre-trim')
     plt.subplot(232)
     plt.imshow(cen)
     plt.title('Center pre-trim')
-    plt.subplot(233)
-    plt.imshow(rig)
-    plt.title('Right pre-trim')
-    plt.subplot(234)
-    plt.imshow(lef_trim)
-    plt.title('Left post-trim')
+    #plt.subplot(233)
+    #plt.imshow(rig)
+    #plt.title('Right pre-trim')
+    #plt.subplot(234)
+    #plt.imshow(lef_trim)
+    #plt.title('Left post-trim')
     plt.subplot(235)
-    plt.imshow(cen_trim)
+    plt.imshow(cen_proc)
     plt.title('Center post-trim')
-    plt.subplot(236)
-    plt.imshow(rig_trim)
-    plt.title('Right post-trim')
+    #plt.subplot(236)
+    #plt.imshow(rig_trim)
+    #plt.title('Right post-trim')
     plt.show()
 
 def normalize_image(image):
@@ -200,16 +200,18 @@ if __name__ == '__main__':
         #lef_proc = trim_image(lef, STOP_ROW, STOP_ROW)
         #rig_proc = trim_image(rig, STOP_ROW, STOP_ROW)
         #show_trim_results(cen, lef, rig, cen_proc, lef_proc, rig_proc) # For troubleshooting
+        #show_trim_results(cen, cen_proc) # For troubleshooting
+
 
 
         # Grayscale the image
         cen_proc = grayscale(cen_proc)
         #lef_proc = grayscale(lef_proc)
         #rig_proc = grayscale(rig_proc)
-        #show_grayscale(cen_proc)
+        show_grayscale(cen_proc)
 
         # Normalize the image
-        cen_proc = normalize_image(cen_proc)
+        #cen_proc = normalize_image(cen_proc)
 
         #lef_proc = normalize_image(lef_proc)
         #rig_proc = normalize_image(rig_proc)

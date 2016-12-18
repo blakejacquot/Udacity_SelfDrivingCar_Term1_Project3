@@ -20,7 +20,11 @@ Preprocesses image and csv data for use in training.
 Use preprocessed image and csv data to train a model
 
 ### drive.py
-Set up to run with the simulator.
+Set up to run with the simulator. Includes import of 'preprocess.py' so that images from
+simulator can be processed with same pipeline as training data. Note, the default setting
+for 'throttle' is 0.2. My trained model mostly works at this throttle but goes off the track
+at about 3/4 to the end. Since Udacity has no stated requirement for this value, I've reduced
+it to 0.1. At this throttle, my model completes the track and is pretty smooth while doing it.
 
 ## Preprocessing
 The file 'preprocess.py' executes a pipelined approach after reading in CSV file and
@@ -29,10 +33,16 @@ involves cropping out the upper portion of the image. Second, the images are con
 RGB to grayscale. This helps with speed of training and prevents overfitting to the colors
 of a scene. Third, the images are normalized from 0/255 to -1.0/+1.0.
 
+Example of cropped image:
+[Fig1]
+
+Example of grayscale image:
+[Fig2]
+
 ## Model Architecture and Training Strategy
 
 ### Model architecture
-The model more or less follows the NVidia architecture. It has 5 convnets followed by
+The model more or less follows the [NVidia][Nvidia] architecture. It has 5 convnets followed by
 flattening followed by 3 fully-connected layers. The final output is a single value
 representing the steering angle. The number of outputs, kernel sizes, and strides were
 chosen to match the Nvidia architecture. The only exception is the final convnet where
@@ -68,3 +78,10 @@ over/underweight a given dataset.
 'BCJ_dataset2': 2000 training samples, 2 laps of slightly drunk driving
 'BCJ_dataset3': 4200 training samples, 3 laps of drunk driving
 'BCJ_dataset4': 500 training samples, special situations
+
+In the above datasets, 'drunk driving' represents careening towards edges of track and
+recovering. This helps the car recover from extreme situations. The special situation
+dataset represents extra samples where the track differs in character and provides extra
+training here.
+
+[Nvidia]: http://images.nvidia.com/content/tegra/automotive/images/2016/solutions/pdf/end-to-end-dl-using-px.pdf

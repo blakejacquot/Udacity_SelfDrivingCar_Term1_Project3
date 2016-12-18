@@ -18,7 +18,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from sklearn.model_selection import train_test_split
 
-def import_csv_data(cvs_path):
+def import_csv_data(csv_path):
     """ Import CSV data from file.
     """
     print('Importing CSV data')
@@ -64,28 +64,28 @@ def trim_image(image, start_row, stop_row):
     trimmed_image = image[start_row:stop_row, :, :] # Trim non-road data
     return trimmed_image
 
-def show_trim_results(cen, lef, rig, cen_trim, lef_trim, rig_trim):
+def show_trim_results(cen, cen_proc):
     """ Examine RBG images after trimming rows
     """
     #plt.figure
-    plt.subplot(231)
-    plt.imshow(lef)
-    plt.title('Left pre-trim')
+    #plt.subplot(231)
+    #plt.imshow(lef)
+    #plt.title('Left pre-trim')
     plt.subplot(232)
     plt.imshow(cen)
     plt.title('Center pre-trim')
-    plt.subplot(233)
-    plt.imshow(rig)
-    plt.title('Right pre-trim')
-    plt.subplot(234)
-    plt.imshow(lef_trim)
-    plt.title('Left post-trim')
+    #plt.subplot(233)
+    #plt.imshow(rig)
+    #plt.title('Right pre-trim')
+    #plt.subplot(234)
+    #plt.imshow(lef_trim)
+    #plt.title('Left post-trim')
     plt.subplot(235)
-    plt.imshow(cen_trim)
+    plt.imshow(cen_proc)
     plt.title('Center post-trim')
-    plt.subplot(236)
-    plt.imshow(rig_trim)
-    plt.title('Right post-trim')
+    #plt.subplot(236)
+    #plt.imshow(rig_trim)
+    #plt.title('Right post-trim')
     plt.show()
 
 def normalize_image(image):
@@ -174,14 +174,14 @@ if __name__ == '__main__':
         print('Processing ', i, ' of ', NUM_EL)
 
         # Get image paths and CSV values
-        line = CSV_DATA[i]
-        center_image_path = line[0]
-        left_image_path = line[1]
-        right_image_path = line[2]
-        steering_angle = line[3]
-        throttle = line[4]
-        break_val = line[5]
-        speed = line[6]
+        curr_line = CSV_DATA[i]
+        center_image_path = curr_line[0]
+        left_image_path = curr_line[1]
+        right_image_path = curr_line[2]
+        steering_angle = curr_line[3]
+        throttle = curr_line[4]
+        break_val = curr_line[5]
+        speed = curr_line[6]
 
         # Set up labels
         steer_ang_float = float(steering_angle)
@@ -200,13 +200,15 @@ if __name__ == '__main__':
         #lef_proc = trim_image(lef, STOP_ROW, STOP_ROW)
         #rig_proc = trim_image(rig, STOP_ROW, STOP_ROW)
         #show_trim_results(cen, lef, rig, cen_proc, lef_proc, rig_proc) # For troubleshooting
+        show_trim_results(cen, cen_proc) # For troubleshooting
+
 
 
         # Grayscale the image
         cen_proc = grayscale(cen_proc)
         #lef_proc = grayscale(lef_proc)
         #rig_proc = grayscale(rig_proc)
-        #show_grayscale(cen_proc)
+        show_grayscale(cen_proc)
 
         # Normalize the image
         cen_proc = normalize_image(cen_proc)
@@ -234,11 +236,11 @@ if __name__ == '__main__':
     #examine_data(0, y, X) # For trouble shooting
 
     # Do train-test-split
-    pickle_path = os.path.join(DATA_PATH_ROOT, 'proc_data.p')
-    train_path = os.path.join(DATA_PATH_ROOT, 'data_train.p')
-    test_path = os.path.join(DATA_PATH_ROOT, 'data_test.p')
-    val_path = os.path.join(DATA_PATH_ROOT, 'data_val.p')
-    Y_LABELS, X_IMAGES = load_pickle(pickle_path)
+    PICKLE_PATH = os.path.join(DATA_PATH_ROOT, 'proc_data.p')
+    TRAIN_PATH = os.path.join(DATA_PATH_ROOT, 'data_train.p')
+    TEST_PATH = os.path.join(DATA_PATH_ROOT, 'data_test.p')
+    VAL_PATH = os.path.join(DATA_PATH_ROOT, 'data_val.p')
+    Y_LABELS, X_IMAGES = load_pickle(PICKLE_PATH)
     #examine_data(3000, y, X)
     y_shape = Y_LABELS.shape
     X_shape = X_IMAGES.shape
@@ -267,9 +269,9 @@ if __name__ == '__main__':
     print('Testing as percentage of whole = %f' % (numel_test/total_samples))
     print('Training as percentage of whole = %f' % (numel_train/total_samples))
     print('Validation as percentage of whole = %f' % (numel_validation/total_samples))
-    write_pickle_file(train_path, train_labels, train_data)
-    write_pickle_file(test_path, test_labels, test_data)
-    write_pickle_file(val_path, val_labels, val_data)
+    write_pickle_file(TRAIN_PATH, train_labels, train_data)
+    write_pickle_file(TEST_PATH, test_labels, test_data)
+    write_pickle_file(VAL_PATH, val_labels, val_data)
 
 
 
