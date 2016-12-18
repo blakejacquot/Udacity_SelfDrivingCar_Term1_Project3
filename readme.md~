@@ -68,8 +68,3 @@ over/underweight a given dataset.
 'BCJ_dataset2': 2000 training samples, 2 laps of slightly drunk driving
 'BCJ_dataset3': 4200 training samples, 3 laps of drunk driving
 'BCJ_dataset4': 500 training samples, special situations
-
-In the above datasets, 'drunk driving' represents careening towards edges of track and
-recovering. This helps the car recover from extreme situations. The special situation
-dataset represents extra samples where the track differs in character and provides extra
-training here.
