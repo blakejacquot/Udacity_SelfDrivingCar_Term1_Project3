@@ -34,11 +34,11 @@ RGB to grayscale. This helps with speed of training and prevents overfitting to 
 of a scene. Third, the images are normalized from 0/255 to -1.0/+1.0.
 
 Example of cropped image:
-[![Simulator Screenshot](/fig1.png)
+![Simulator Screenshot](/fig1.png)
 
 Example of grayscale image:
-[![Simulator Screenshot](/fig2.png)
-]
+![Simulator Screenshot](/fig2.png)
+
 
 ## Model Architecture and Training Strategy
 
