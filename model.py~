@@ -229,57 +229,57 @@ if __name__ == '__main__':
     NUM_EPOCHS = 20
     LEARNING_RATE = 0.001
 
+#     DATA_PATH = '/Users/blakejacquot/Desktop/temp2/DrivingSimulator/Data_from_Udacity/'
+#     train_on_path(DATA_PATH, BATCH_SIZE, NUM_EPOCHS, LEARNING_RATE)
+#
+#     # Basic driving
+#     DATA_PATH = '/Users/blakejacquot/Desktop/temp2/DrivingSimulator/BCJ_dataset1/'
+#     train_on_path(DATA_PATH, BATCH_SIZE, NUM_EPOCHS, LEARNING_RATE)
+#
+#     DATA_PATH = '/Users/blakejacquot/Desktop/temp2/DrivingSimulator/BCJ_dataset2/'
+#     train_on_path(DATA_PATH, BATCH_SIZE, NUM_EPOCHS, LEARNING_RATE)
+#
+#     # Super drunk driving dataset. Use to recover from extreme situations
+#     DATA_PATH = '/Users/blakejacquot/Desktop/temp2/DrivingSimulator/BCJ_dataset3/'
+#     train_on_path(DATA_PATH, BATCH_SIZE, 5, LEARNING_RATE)
+#
+#     DATA_PATH = '/Users/blakejacquot/Desktop/temp2/DrivingSimulator/BCJ_dataset4/'
+#     train_on_path(DATA_PATH, BATCH_SIZE, 30, LEARNING_RATE)
+
+#
+#     DATA_PATH = '/Users/blakejacquot/Desktop/temp2/DrivingSimulator/Data_from_Udacity/'
+#     train_on_path(DATA_PATH, BATCH_SIZE, 5, 0.0001)
+#
+#     DATA_PATH = '/Users/blakejacquot/Desktop/temp2/DrivingSimulator/BCJ_dataset1/'
+#     train_on_path(DATA_PATH, BATCH_SIZE, 5, 0.0001)
+#
+#     DATA_PATH = '/Users/blakejacquot/Desktop/temp2/DrivingSimulator/BCJ_dataset2/'
+#     train_on_path(DATA_PATH, BATCH_SIZE, 5, 0.0001)
+#
+#     # Super drunk driving dataset. Use to recover from extreme situations
+#     DATA_PATH = '/Users/blakejacquot/Desktop/temp2/DrivingSimulator/BCJ_dataset3/'
+#     train_on_path(DATA_PATH, BATCH_SIZE, 5, 0.0001)
+#
+#     DATA_PATH = '/Users/blakejacquot/Desktop/temp2/DrivingSimulator/BCJ_dataset4/'
+#     train_on_path(DATA_PATH, BATCH_SIZE, 5, 0.0001)
+
+
+
     DATA_PATH = '/Users/blakejacquot/Desktop/temp2/DrivingSimulator/Data_from_Udacity/'
-    train_on_path(DATA_PATH, BATCH_SIZE, NUM_EPOCHS, LEARNING_RATE)
-
-    # Basic driving
-    DATA_PATH = '/Users/blakejacquot/Desktop/temp2/DrivingSimulator/BCJ_dataset1/'
-    train_on_path(DATA_PATH, BATCH_SIZE, NUM_EPOCHS, LEARNING_RATE)
-
-    DATA_PATH = '/Users/blakejacquot/Desktop/temp2/DrivingSimulator/BCJ_dataset2/'
-    train_on_path(DATA_PATH, BATCH_SIZE, NUM_EPOCHS, LEARNING_RATE)
-
-    # Super drunk driving dataset. Use to recover from extreme situations
-    DATA_PATH = '/Users/blakejacquot/Desktop/temp2/DrivingSimulator/BCJ_dataset3/'
-    train_on_path(DATA_PATH, BATCH_SIZE, 5, LEARNING_RATE)
-
-    DATA_PATH = '/Users/blakejacquot/Desktop/temp2/DrivingSimulator/BCJ_dataset4/'
-    train_on_path(DATA_PATH, BATCH_SIZE, 30, LEARNING_RATE)
-
-
-    DATA_PATH = '/Users/blakejacquot/Desktop/temp2/DrivingSimulator/Data_from_Udacity/'
     train_on_path(DATA_PATH, BATCH_SIZE, 5, 0.0001)
 
     DATA_PATH = '/Users/blakejacquot/Desktop/temp2/DrivingSimulator/BCJ_dataset1/'
     train_on_path(DATA_PATH, BATCH_SIZE, 5, 0.0001)
 
-    DATA_PATH = '/Users/blakejacquot/Desktop/temp2/DrivingSimulator/BCJ_dataset2/'
-    train_on_path(DATA_PATH, BATCH_SIZE, 5, 0.0001)
+#    DATA_PATH = '/Users/blakejacquot/Desktop/temp2/DrivingSimulator/BCJ_dataset2/'
+#    train_on_path(DATA_PATH, BATCH_SIZE, 5, 0.0001)
 
-    # Super drunk driving dataset. Use to recover from extreme situations
-    DATA_PATH = '/Users/blakejacquot/Desktop/temp2/DrivingSimulator/BCJ_dataset3/'
-    train_on_path(DATA_PATH, BATCH_SIZE, 5, 0.0001)
+#    # Super drunk driving dataset. Use to recover from extreme situations
+#    DATA_PATH = '/Users/blakejacquot/Desktop/temp2/DrivingSimulator/BCJ_dataset3/'
+#    train_on_path(DATA_PATH, 64, 10, 0.0001)
 
-    DATA_PATH = '/Users/blakejacquot/Desktop/temp2/DrivingSimulator/BCJ_dataset4/'
-    train_on_path(DATA_PATH, BATCH_SIZE, 5, 0.0001)
-
-
-
-    DATA_PATH = '/Users/blakejacquot/Desktop/temp2/DrivingSimulator/Data_from_Udacity/'
-    train_on_path(DATA_PATH, BATCH_SIZE, 5, 0.0001)
-
-    DATA_PATH = '/Users/blakejacquot/Desktop/temp2/DrivingSimulator/BCJ_dataset1/'
-    train_on_path(DATA_PATH, BATCH_SIZE, 5, 0.0001)
-
-    DATA_PATH = '/Users/blakejacquot/Desktop/temp2/DrivingSimulator/BCJ_dataset2/'
-    train_on_path(DATA_PATH, BATCH_SIZE, 5, 0.0001)
-
-    # Super drunk driving dataset. Use to recover from extreme situations
-    DATA_PATH = '/Users/blakejacquot/Desktop/temp2/DrivingSimulator/BCJ_dataset3/'
-    train_on_path(DATA_PATH, 64, 10, 0.0001)
-
-    DATA_PATH = '/Users/blakejacquot/Desktop/temp2/DrivingSimulator/BCJ_dataset4/'
-    train_on_path(DATA_PATH, 64, 10, 0.0001)
+#    DATA_PATH = '/Users/blakejacquot/Desktop/temp2/DrivingSimulator/BCJ_dataset4/'
+#    train_on_path(DATA_PATH, 64, 10, 0.0001)
 
 
 

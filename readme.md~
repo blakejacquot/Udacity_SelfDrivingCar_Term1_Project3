@@ -89,11 +89,4 @@ recovering. This helps the car recover from extreme situations. The special situ
 dataset represents extra samples where the track differs in character and provides extra
 training here.
 
-### Training notes
-I found good results by training with 10-20 epochs for each dataset. I trained with 'Udacity'
-first, and then each dataset in order. I reduced the epochs and decreased the learning rate
-with each training session.
-
-
-
 [Nvidia]: http://images.nvidia.com/content/tegra/automotive/images/2016/solutions/pdf/end-to-end-dl-using-px.pdf
