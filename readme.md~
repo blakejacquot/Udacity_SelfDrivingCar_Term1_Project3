@@ -50,7 +50,6 @@ chosen to match the Nvidia architecture. The only exception is the final convnet
 kernel size was chosen to be 3x1 vs 3x3. This is because the output of the prior layer
 did not allow for 3x3, presumably because I'm starting with a different image size.
 
-
 The Nvidia architecture can be seen here:
 ![Simulator Screenshot](/fig3.png)
 
@@ -94,6 +93,38 @@ I found good results by training with 10-20 epochs for each dataset. I trained w
 first, and then each dataset in order. I reduced the epochs and decreased the learning rate
 with each training session.
 
+### Discussion
+
+It'll be great if you listed the different methodologies, and explaining the pros and
+cons of each. Below are some questions that might help you improve on your answer
+
+How did you decide on the batch size?
+How did you decide how many epochs to use?
+Did you test different type of networks to see how your results will be affected?
+Please provide a more thorough discussion here based on the discussion above
+
+In your README, you should also include details of your architecture. This should be in a
+clearly outlined form including information on:
+
+Requires Changes
+
+The characteristics of the architecture.
+The type of model used.
+The number of layers in the model.
+The size of each layer.
+Kernel sizes and strides for your layers used
+Note that the aim of this section is to make it so detailed so much so that, any one
+reading your report can reproduce your same model just from studying this section.
+
+Further more, It is good that you included an image that is the visualization of your
+model. However, There is a big issue here, you used 3x1 as the kernel size for the final
+convolutional layer but in your visualization, I see the kernel size for that layer is 3x3.
+Please amend to this by providing a correct visualization of your actual model.
+
+Suggestions
+
+You can acctually produce a visualization of your architecture while using the
+model.summary() method of Keras or tensorboard a too for visualizing your models.
 
 
 [Nvidia]: http://images.nvidia.com/content/tegra/automotive/images/2016/solutions/pdf/end-to-end-dl-using-px.pdf
