@@ -42,7 +42,7 @@ Example of grayscale image:
 
 ## Model Architecture and Training Strategy
 
-### Model architecture
+### Model inspiration
 The model more or less follows the [NVidia][Nvidia] architecture. It has 5 convnets followed by
 flattening followed by 3 fully-connected layers. The final output is a single value
 representing the steering angle. The number of outputs, kernel sizes, and strides were
@@ -50,12 +50,20 @@ chosen to match the Nvidia architecture. The only exception is the final convnet
 kernel size was chosen to be 3x1 vs 3x3. This is because the output of the prior layer
 did not allow for 3x3, presumably because I'm starting with a different image size.
 
-The Nvidia architecture can be seen here:
-![Simulator Screenshot](/fig3.png)
-
-Perhaps different than Nvidia architecture, I chose a 20% dropout rate and Relu activation
+Different than Nvidia architecture, I chose a 20% dropout rate and Relu activation
 after each convnet. Dropout helps prevent overfitting. Activation breaks linearity in
 the network and allows learning more complex functions than linear regression.
+
+### Model specifics
+
+Using model.summary() from keras, the specific architecture I used is:
+![Simulator Screenshot](/fig3.png)
+
+The model uses 5 convnets followed by 4 fully-connected (dense) layers. Most convnet layers
+are followed by max pooling, activation ('relu', and dropout (20%). Convnet layers 1-3 have
+2x2 stride and 5x5 kernel. Convnet layers 4-5 have no stride. Convnet layer 4 has 3x3
+kernel and convnet layer 5 has 3x1 kernel.
+
 
 ### Train/val/test splits
 Just before ending, 'preprocess.py' executes the train/test/val split on a dataset. The
@@ -96,70 +104,18 @@ with each training session.
 ### Discussion
 
 How did I decide on batch size?
-
+Batch size was selected as 32. This was selected in part to easily fit my local machine's
+memory and processing, but also because it increases sample variance and may result in less overfitting.
+If I had a big GPU system, I would pick a larger batch size because the system could more
+easily parallelize it.
 
 How did I decide on number of epochs?
-
+Number of epochs was selected as 20. I found that the cost function generally didn't change
+much after this. Also 20 allowed me to iterate fairly quickly.
 
 Did I test different types of networks to see how results are affected?
+I did not test other network configurations. I tried to generally copy the Nvidia architecture
+since it was known to be able to solve this problem. If I had more free time I may have explored
+different architectures.
 
-#### Details of architecture:
-The characteristics of the architecture.
-The type of model used.
-The number of layers in the model.
-The size of each layer.
-Kernel sizes and strides for your layers used.
-Visualize architecture with model.summary() in Keras.
-
-
-
-Layer (type)                     Output Shape          Param #     Connected to
-convolution2d_1 (Convolution2D)  (None, 38, 158, 24)   624         convolution2d_input_1[0][0]
-____________________________________________________________________________________________________
-maxpooling2d_1 (MaxPooling2D)    (None, 38, 79, 12)    0           convolution2d_1[0][0]
-____________________________________________________________________________________________________
-activation_1 (Activation)        (None, 38, 79, 12)    0           maxpooling2d_1[0][0]
-____________________________________________________________________________________________________
-dropout_1 (Dropout)              (None, 38, 79, 12)    0           activation_1[0][0]
-____________________________________________________________________________________________________
-convolution2d_2 (Convolution2D)  (None, 17, 38, 36)    10836       dropout_1[0][0]
-____________________________________________________________________________________________________
-maxpooling2d_2 (MaxPooling2D)    (None, 17, 19, 18)    0           convolution2d_2[0][0]
-____________________________________________________________________________________________________
-activation_2 (Activation)        (None, 17, 19, 18)    0           maxpooling2d_2[0][0]
-____________________________________________________________________________________________________
-dropout_2 (Dropout)              (None, 17, 19, 18)    0           activation_2[0][0]
-____________________________________________________________________________________________________
-convolution2d_3 (Convolution2D)  (None, 7, 8, 48)      21648       dropout_2[0][0]
-____________________________________________________________________________________________________
-maxpooling2d_3 (MaxPooling2D)    (None, 7, 4, 24)      0           convolution2d_3[0][0]
-____________________________________________________________________________________________________
-activation_3 (Activation)        (None, 7, 4, 24)      0           maxpooling2d_3[0][0]
-____________________________________________________________________________________________________
-dropout_3 (Dropout)              (None, 7, 4, 24)      0           activation_3[0][0]
-____________________________________________________________________________________________________
-convolution2d_4 (Convolution2D)  (None, 5, 2, 64)      13888       dropout_3[0][0]
-____________________________________________________________________________________________________
-maxpooling2d_4 (MaxPooling2D)    (None, 5, 1, 32)      0           convolution2d_4[0][0]
-____________________________________________________________________________________________________
-activation_4 (Activation)        (None, 5, 1, 32)      0           maxpooling2d_4[0][0]
-____________________________________________________________________________________________________
-dropout_4 (Dropout)              (None, 5, 1, 32)      0           activation_4[0][0]
-____________________________________________________________________________________________________
-convolution2d_5 (Convolution2D)  (None, 3, 1, 64)      6208        dropout_4[0][0]
-____________________________________________________________________________________________________
-activation_5 (Activation)        (None, 3, 1, 64)      0           convolution2d_5[0][0]
-____________________________________________________________________________________________________
-dropout_5 (Dropout)              (None, 3, 1, 64)      0           activation_5[0][0]
-____________________________________________________________________________________________________
-flatten_1 (Flatten)              (None, 192)           0           dropout_5[0][0]
-____________________________________________________________________________________________________
-dense_1 (Dense)                  (None, 100)           19300       flatten_1[0][0]
-____________________________________________________________________________________________________
-dense_2 (Dense)                  (None, 50)            5050        dense_1[0][0]
-____________________________________________________________________________________________________
-dense_3 (Dense)                  (None, 10)            510         dense_2[0][0]
-____________________________________________________________________________________________________
-dense_4 (Dense)                  (None, 1)             11          dense_3[0][0]
-Total params: 78075
 
